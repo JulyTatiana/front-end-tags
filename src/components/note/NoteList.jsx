@@ -8,7 +8,7 @@ import { Store } from '../../state/StoreProvider';
 const NoteList = ({ notes, id }) => {
 
   const { dispatch } = useContext(Store)
-
+  
   const onDeleteTag = async (tag) => {
     const response = await deleteTag(tag.id);
     if (response.status === 200) {
@@ -31,33 +31,34 @@ const NoteList = ({ notes, id }) => {
       <NoteForm id={id} />
       <input placeholder='filter notes by tags' onChange={onFilter} type="text" value={filter} />
 
-      {notes
-      
-      // .filter(filterNote => {
-      //   return true
-      // }
-      //   // if (filter == "") {
-      //   //   return filterNote
-      //   // }
-      //   // else if (filterNote.tagList.length > 0) {
-      //   //   filterNote.tagList.forEach((tag) => {
-      //   //     if (tag.name.toLowerCase().includes(filter.toLowerCase())) {
-      //   //       return filterNote
-      //   //     }
-      //   //   })
-      //   // }
-      //   // }
-      // )
-      .map((note) => 
+      {notes.filter(filterNote => {
+        if (filter == "") {
+          return filterNote;
+        } else if (filterNote.tagList.length > 0) {
+          const tagsFromNote = filterNote.tagList;
+          // console.log("Tags: ");
+          // console.log(tagsFromNote);
+          const containsTag = tagsFromNote.filter((tag) => {return tag.name.toLowerCase().includes(filter.toLowerCase())});
+          // console.log("Tags que coinciden: ");
+          // console.log(containsTag);
+          
+          // console.log("Tamaño de containsTag: ");
+          // console.log(containsTag.length);
+          if (containsTag.length > 0){
+            return filterNote;
+          }
+        }
+        return false;
+      }
+      ).map(note =>
         <div key={note.id}>
-          <Note key={note.id} note={note}></Note>
+          <Note note={note} />
           {
             note.tagList.map(tag => {
-              return <div>
-                {tag.name}
-                <button onClick={() => onDeleteTag(tag)}>
-                  Delete Tag
-                </button>
+              return <div key={tag.id}>
+                <h3>{tag.name}
+                <button onClick={() => onDeleteTag(tag)}>Delete Tag</button>
+                </h3>
               </div>
             })
           }
