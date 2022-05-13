@@ -19,7 +19,7 @@ const CategoryList = () => {
   }, [])
 
   return (
-    <div>
+    <div className='container'>
       <h1 style={{display: 'flex',  justifyContent:'center', alignItems:'center', color: 'blue'}}> TO DO LIST WITH CATEGORY OPTION</h1>
       <CategoryForm />
       {state.categoryList.map(category => <Category key={category.id}category={category} />)}
