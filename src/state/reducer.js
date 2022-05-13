@@ -73,9 +73,7 @@ const reducer = (state, action) => {
       const newListOfTags = noteContainsPayloadTag.tagList.filter(tag => tag.id !== action.payload.id)
       noteContainsPayloadTag.tagList = newListOfTags
       const newStateOfCategory = state.categoryList.map(note => note.id == noteContainsPayloadTag.id ? noteContainsPayloadTag : note)
-      console.log(newStateOfCategory)
-      
-      return state.categoryList
+      return {...state, categoryList: newStateOfCategory}
   }
 }
 
