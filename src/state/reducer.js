@@ -68,10 +68,13 @@ const reducer = (state, action) => {
       return newStateWithNoteToBeUpdated
 
     case 'delete-tag':
-      //const newTagList = state.CategoryList.map(category => category.notes.map(note=>note.id === action.payload.noteId))
-      const newTagList = state.categoryList.map(category => console.log(category))
-      //console.log(newTagList)
-      //const newListNotesWithoutPayloadTag = state.categoryList.notes
+
+      const noteContainsPayloadTag = state.categoryList.map(category => category.notes.filter(note => note.id === action.payload.noteId))[0][0]
+      const newListOfTags = noteContainsPayloadTag.tagList.filter(tag => tag.id !== action.payload.id)
+      noteContainsPayloadTag.tagList = newListOfTags
+      const newStateOfCategory = state.categoryList.map(note => note.id == noteContainsPayloadTag.id ? noteContainsPayloadTag : note)
+      console.log(newStateOfCategory)
+      
       return state.categoryList
   }
 }
