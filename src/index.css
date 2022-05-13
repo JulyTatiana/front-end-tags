@@ -1,3 +1,26 @@
-.h1{
-    font: 'Verdana';
-  }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #DDD;
+}
+
+h1 {
+    color: rgb(0, 0, 255)
+}
+
+h2 {
+    color: rgb(46, 210, 231)
+}
+
+h3 {
+    font-size: 0.9rem;
+}
+
+.container {
+    max-width: 450px;
+    margin: 30px auto;
+    min-height: 200px;
+    border: 1px solid black;
+    padding: 30px;
+    border-radius: 25px;
+    background-color: #EEE;
+}
