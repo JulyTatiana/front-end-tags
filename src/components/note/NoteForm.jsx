@@ -50,6 +50,7 @@ const NoteForm = ({id}) => {
         <label htmlFor="note"></label>
         <input onChange={addingMessage} type="text" name="note" value={message} placeholder={id===state.note.categoryId?state.note.message:''}/>
         {id===state.note.categoryId?<button onClick={editNote}>Edit note</button>:<button onClick={addNote}>Add note</button>}
+        <br></br>
       </form>
     </div>
   )
