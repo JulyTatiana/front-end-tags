@@ -35,3 +35,4 @@ You will get something like this:
 
   ready in 747ms.
 ```
+Copy that URL and paste it on your preferred browser and you will be ready to use the app.
