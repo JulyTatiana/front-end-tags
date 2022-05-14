@@ -21,3 +21,17 @@ npm install
 ```javascript React
 npm run dev
 ```
+You will get something like this:
+
+```
+> todo-app-front@0.0.0 dev
+> vite
+
+
+  vite v2.9.9 dev server running at:
+
+  > Local: http://localhost:3000/
+  > Network: use `--host` to expose
+
+  ready in 747ms.
+```
